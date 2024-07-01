@@ -1,0 +1,37 @@
+// Euclid's Algorithim.cpp : Defines the entry point for the console application.
+//
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int a = 0, b = 0, c = 1;
+	bool valid = false;
+
+	do {
+		cout << "Enter two integers (non-zero): ";
+		cin >> a >> b;
+		if (!cin || a == 0 || b == 0) {
+			cout << "Invalid entry.\n";
+			cin.clear();
+			cin.ignore(80, '\n');
+		}
+		else {
+			valid = true;
+			if (a < b) {
+				c = a;
+				a = b;
+				b = c;
+			}
+		}
+	} while (!valid);
+	
+	while (c != 0) {
+		c = a % b;
+		a = b;
+		b = c;
+ 	}
+	cout << "GCD: " << a << endl;
+    return 0;
+}
